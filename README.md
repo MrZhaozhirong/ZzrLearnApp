@@ -1,11 +1,12 @@
 ##### ZzrLearnApp 用于自己学习网上资料fork工程
 
 1.VideoDump 官方demo 基于GLSurfaceView+MediaPlayer，其中glReadPixels的参数用的比较严谨（如下）
-    // So far, glReadPixels only supports two (format, type) combinations
-    //     GL_RGB  GL_UNSIGNED_SHORT_5_6_5   16 bits per pixel (default)
-    //     GL_RGBA GL_UNSIGNED_BYTE          32 bits per pixel
-    public static final int PIXEL_FORMAT = GLES20.GL_RGBA;
-    public static final int PIXEL_TYPE = PIXEL_FORMAT == GLES20.GL_RGBA
+
+// So far, glReadPixels only supports two (format, type) combinations
+//     GL_RGB  GL_UNSIGNED_SHORT_5_6_5   16 bits per pixel (default)
+//     GL_RGBA GL_UNSIGNED_BYTE          32 bits per pixel
+public static final int PIXEL_FORMAT = GLES20.GL_RGBA;
+public static final int PIXEL_TYPE = PIXEL_FORMAT == GLES20.GL_RGBA
                                         ? GLES20.GL_UNSIGNED_BYTE : GLES20.GL_UNSIGNED_SHORT_5_6_5;
                                         
 GLES20.glReadPixels(mStartX, mStartY, mWidth, mHeight,
