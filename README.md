@@ -27,4 +27,4 @@ GLES20.glReadPixels(mStartX, mStartY, mWidth, mHeight,
   然后抽取EGL部分，在TextureView里增加一个渲染线程，代码很仔细区分了渲染线程的surface和系统的surface，
   跟着fork一次真的收获很大，才知道自己对Android的OpenGL的详细细节真的差太多了。
   
-3.NDK版的GL，环境还是依赖于GLSurfaceview的。调用在NDK层，还是有点参考价值的。
+3.NDK版的GL，环境还是依赖于GLSurfaceview的。调用在NDK层，还是有点参考价值的。java层加载纹理后传入jni然后在cpp上走剩下的gl流程。
