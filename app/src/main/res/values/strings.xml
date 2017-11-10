@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">ZzrLearnApp</string>
+
+
+
+
+    <!--Grafika-->
+    <string name="workJobName_text">Working&#8230;</string>
+    <string name="preparing_content">Preparing content&#8230;</string>
+    <string name="contentGenerationFailedTitle">Unable to generate content</string>
+    <string name="contentGenerationFailedMsg">Failed to generate content.
+        Some features may be unavailable.\n\n%1$s</string>
+    <string name="ok">OK</string>
+    <string name="about_item">About</string>
+    <string name="regenerateContent_item">Regenerate content</string>
+    <string name="about_text">\nA random assortment of graphics and media hacks.\n\n
+        [This is a perpetual work in progress.]\n\n
+        Copyright 2013-2014 Google Inc.  All rights reserved.</string>
 </resources>

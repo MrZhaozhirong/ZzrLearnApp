@@ -23,7 +23,7 @@ static void checkGlError(const char* op) {
 }
 
 static const char gVertexShader[] =
-        "attribute vec4 vPosition;\n"
+                "attribute vec4 vPosition;\n"
                 "attribute vec2 vTexCoords;\n"
                 "varying vec2 colorVarying;\n"
                 "void main() {\n"
@@ -32,7 +32,7 @@ static const char gVertexShader[] =
                 "}\n";
 
 static const char gFragmentShader[] =
-        "precision mediump float;\n"
+                "precision mediump float;\n"
                 "varying vec2 colorVarying;\n"
                 "uniform sampler2D sampler;\n"
                 "void main() {\n"
