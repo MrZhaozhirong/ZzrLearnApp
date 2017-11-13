@@ -78,7 +78,6 @@ public abstract class GeneratedMovie implements Content {
         } catch (IllegalStateException ise) {
             // This is generally the first time we ever try to encode something through a Surface
             // so specialize the message a bit if we can guess at why it's failing.
-            // TODO: failure message should come out of strings.xml for i18n
             if (isSoftwareCodec(mEncoder)) {
                 throw new RuntimeException("Can't use input surface with software codec: " +
                         mEncoder.getCodecInfo().getName(), ise);
