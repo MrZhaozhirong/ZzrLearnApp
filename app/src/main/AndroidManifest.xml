@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="org.learn.test.grafika.PlayMovieActivity"
+                  android:label="@string/title_activity_play_movie" />
+
 
 
         <activity android:name="org.learn.test.ndkgl.NDKGLActivity"/>
