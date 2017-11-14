@@ -21,4 +21,8 @@
     <string name="stop_button_text">Stop</string>
     <string name="locked60fps_checkbox">Play at 60fps</string>
     <string name="loopPlayback_checkbox">Loop playback</string>
+    <string name="capture">Capture</string>
+    <string name="secondsOfVideo">%1$.3f seconds of video</string>
+    <string name="nowRecording">" [RECORDING]"</string>
+    <string name="nowSaving">" [saving]"</string>
 </resources>
