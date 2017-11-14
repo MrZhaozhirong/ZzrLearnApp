@@ -37,7 +37,7 @@ public class GrafikaMainActivity extends ListActivity {
      */
     private static final String[][] TESTS = {
             { "* Play video (TextureView)",
-                    "Plays .mp4 videos created by Grafika",
+                    "Plays .mp4 videos created by TextureView",
                     "PlayMovieActivity" },
             { "Continuous capture",
                     "Records camera continuously, saves a snapshot when requested",
@@ -55,7 +55,7 @@ public class GrafikaMainActivity extends ListActivity {
                     "Three overlapping SurfaceViews, one secure",
                     "MultiSurfaceActivity" },
             { "Play video (SurfaceView)",
-                    "Plays .mp4 videos created by Grafika",
+                    "Plays .mp4 videos created by SurfaceView",
                     "PlayMovieSurfaceActivity" },
             { "Record GL app",
                     "Records GL app with FBO, re-render, or FB blit",
@@ -103,7 +103,7 @@ public class GrafikaMainActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main_grafika);
+        setContentView(R.layout.grafika_activity_main);
 
         // One-time singleton initialization; requires activity context to get file location.
         ContentManager.initialize(this);

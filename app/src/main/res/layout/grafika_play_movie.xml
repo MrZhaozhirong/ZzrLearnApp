@@ -29,8 +29,8 @@
         android:id="@+id/locked60fps_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/movie_texture_view"
-        android:layout_below="@id/play_stop_button"
+        android:layout_alignLeft="@+id/movie_texture_view"
+        android:layout_below="@+id/play_stop_button"
         android:text="@string/locked60fps_checkbox" />
 
     <CheckBox
