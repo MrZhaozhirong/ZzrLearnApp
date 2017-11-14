@@ -21,7 +21,7 @@ import java.nio.ByteBuffer;
 
 public class MoviePlayer {
     private static final String TAG = GrafikaMainActivity.TAG;
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
 
     // Declare this here to reduce allocations.
     private MediaCodec.BufferInfo mBufferInfo = new MediaCodec.BufferInfo();
@@ -90,6 +90,10 @@ public class MoviePlayer {
         try {
             extractor = new MediaExtractor();
             extractor.setDataSource(sourceFile.toString());
+            int trackCount = extractor.getTrackCount();
+            if (DEBUG) {
+                Log.d(TAG, "Video trackCount is " + trackCount);
+            }
             int trackIndex = selectTrack(extractor);
             if (trackIndex < 0) {
                 throw new RuntimeException("No video track found in " + mSourceFile);
