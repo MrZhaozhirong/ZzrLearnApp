@@ -1,4 +1,4 @@
-package org.learn.test.grafika.playmovie;
+package org.learn.test.grafika.component;
 
 import android.media.MediaCodec;
 import android.media.MediaExtractor;
