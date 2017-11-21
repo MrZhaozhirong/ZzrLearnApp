@@ -14,8 +14,8 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import org.learn.test.R;
-import org.learn.test.grafika.playmovie.MoviePlayer;
-import org.learn.test.grafika.playmovie.SpeedControlCallback;
+import org.learn.test.grafika.component.MoviePlayer;
+import org.learn.test.grafika.component.SpeedControlCallback;
 import org.learn.test.grafika.util.MiscUtils;
 
 import java.io.File;
