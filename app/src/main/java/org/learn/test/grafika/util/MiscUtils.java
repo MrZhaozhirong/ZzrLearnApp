@@ -29,6 +29,7 @@ public class MiscUtils {
      */
     public static String[] getFiles(File dir, String glob) {
         String regex = globToRegex(glob);
+        Log.e(TAG, "globToRegex "+regex);
         final Pattern pattern = Pattern.compile(regex);
         String[] result = dir.list(new FilenameFilter() {
             @Override public boolean accept(File dir, String name) {
