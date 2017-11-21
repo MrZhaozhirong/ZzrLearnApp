@@ -16,7 +16,8 @@
     <string name="about_text">\nA random assortment of graphics and media hacks.\n\n
         [This is a perpetual work in progress.]\n\n
         Copyright 2013-2014 Google Inc.  All rights reserved.</string>
-    <string name="title_activity_play_movie">Play video (TextureView)</string>
+    <string name="title_activity_play_movie">Play Video (TextureView)</string>
+    <string name="title_activity_continuous_capture">Continuous Capture (SurfaceView)</string>
     <string name="play_button_text">Play</string>
     <string name="stop_button_text">Stop</string>
     <string name="locked60fps_checkbox">Play at 60fps</string>
@@ -25,4 +26,6 @@
     <string name="secondsOfVideo">%1$.3f seconds of video</string>
     <string name="nowRecording">" [RECORDING]"</string>
     <string name="nowSaving">" [saving]"</string>
+    <string name="recordingSucceeded">Recording succeeded</string>
+    <string name="recordingFailed">Recording FAILED (err=%1$d)</string>
 </resources>
