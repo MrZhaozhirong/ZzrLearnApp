@@ -1,6 +1,7 @@
 package org.learn.test.grafika;
 
 import android.app.Activity;
+import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.util.Log;
@@ -165,7 +166,7 @@ public class PlayMovieActivity extends Activity implements TextureView.SurfaceTe
                 surface.release();
                 return;
             }
-            // adjustAspectRatio(player.getVideoWidth(), player.getVideoHeight());
+            adjustAspectRatio(player.getVideoWidth(), player.getVideoHeight());
 
             mPlayTask = new MoviePlayer.PlayTask(player, this);
             if (((CheckBox) findViewById(R.id.loopPlayback_checkbox)).isChecked()) {
@@ -193,6 +194,38 @@ public class PlayMovieActivity extends Activity implements TextureView.SurfaceTe
         mShowStopLabel = false;
         mPlayTask = null;
         updateControls();
+    }
+
+
+    /**
+     * Sets the TextureView transform to preserve the aspect ratio of the video.
+     */
+    private void adjustAspectRatio(int videoWidth, int videoHeight) {
+        Log.d(TAG, "video measure : "+videoWidth+"x"+videoHeight);
+        int viewWidth = mTextureView.getWidth();
+        int viewHeight = mTextureView.getHeight();
+        double aspectRatio = (double) videoHeight / videoWidth;
+        Log.d(TAG, "view measure : "+viewWidth+"x"+viewHeight);
+
+        int newWidth, newHeight;
+        if (viewHeight > (int) (viewWidth * aspectRatio)) {
+            // limited by narrow width; restrict height
+            newWidth = viewWidth;
+            newHeight = (int) (viewWidth * aspectRatio);
+        } else {
+            // limited by short height; restrict width
+            newWidth = (int) (viewHeight / aspectRatio);
+            newHeight = viewHeight;
+        }
+        int xoff = (viewWidth - newWidth) / 2;
+        int yoff = (viewHeight - newHeight) / 2;
+        Log.d(TAG, "new measure : "+newWidth+"x"+newHeight);
+        Matrix txform = new Matrix();
+        mTextureView.getTransform(txform);
+        txform.setScale((float) newWidth / viewWidth, (float) newHeight / viewHeight);
+        //txform.postRotate(10);          // just for fun
+        txform.postTranslate(xoff, yoff);
+        mTextureView.setTransform(txform);
     }
 
 
