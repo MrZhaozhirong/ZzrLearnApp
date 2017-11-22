@@ -21,7 +21,7 @@ import java.nio.ByteBuffer;
 
 public class MoviePlayer {
     private static final String TAG = GrafikaMainActivity.TAG;
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     // Declare this here to reduce allocations.
     private MediaCodec.BufferInfo mBufferInfo = new MediaCodec.BufferInfo();
