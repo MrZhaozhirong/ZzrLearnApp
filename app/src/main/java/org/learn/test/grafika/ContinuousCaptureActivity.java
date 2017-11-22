@@ -37,8 +37,8 @@ import java.lang.ref.WeakReference;
 public class ContinuousCaptureActivity extends Activity implements SurfaceHolder.Callback {
 
     private static final String TAG = GrafikaMainActivity.TAG;
-    private static final int VIDEO_WIDTH = 720;  // dimensions for 720p video
-    private static final int VIDEO_HEIGHT = 1280;
+    private static final int VIDEO_WIDTH = 1280;
+    private static final int VIDEO_HEIGHT = 720;    // dimensions for 720p video
     private static final int DESIRED_PREVIEW_FPS = 15;
 
     private MainHandler mHandler;
