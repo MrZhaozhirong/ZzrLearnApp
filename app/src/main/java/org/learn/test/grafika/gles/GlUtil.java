@@ -14,7 +14,7 @@ import java.nio.FloatBuffer;
  */
 
 public class GlUtil {
-    public static final String TAG = "Grafika";
+    public static final String TAG = "Grafika-GL";
 
     /** Identity matrix for general use.  Don't modify or life will get weird. */
     public static final float[] IDENTITY_MATRIX;
