@@ -12,7 +12,7 @@ public class SpeedControlCallback implements MoviePlayer.FrameCallback {
     private static final String TAG = GrafikaMainActivity.TAG;
     private static final boolean CHECK_SLEEP_TIME = false;
 
-    private static final long ONE_MILLION = 1000000L; //1s
+    private static final long ONE_MILLION = 1000000L; //1s=1000000微秒
     private long mFixedFrameDurationUsec;
     /**
      * Sets a fixed playback rate.  If set, this will ignore the presentation time stamp
@@ -67,8 +67,9 @@ public class SpeedControlCallback implements MoviePlayer.FrameCallback {
                 // to alert the developer that their movie might have issues (maybe they
                 // accidentally output timestamps in nsec rather than usec).
                 Log.i(TAG, "Inter-frame pause was " + (frameDelta / ONE_MILLION) +
-                        "sec, capping at 5 sec");
-                frameDelta = 5 * ONE_MILLION;
+                        "sec, capping at 1 sec");
+                //frameDelta = 5 * ONE_MILLION;
+                frameDelta = ONE_MILLION;
             }
 
             long desiredUsec = mPrevMonotonicUsec + frameDelta;  // when we want to wake up
@@ -86,7 +87,7 @@ public class SpeedControlCallback implements MoviePlayer.FrameCallback {
                 long sleepTimeUsec = desiredUsec - nowUsec;
                 //微秒单位
                 if (sleepTimeUsec > 500000) {
-                    sleepTimeUsec = 500000;
+                    sleepTimeUsec = 500000; //0.5s
                 }
                 try {
                     if (CHECK_SLEEP_TIME) {
