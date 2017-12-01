@@ -37,8 +37,10 @@
         <activity android:name="org.learn.test.grafika.DoubleDecodeActivity"
                   android:label="@string/title_activity_double_decode"
                   android:screenOrientation="sensor"/>
-
-
+        <activity android:name="org.learn.test.grafika.HardwareScalerActivity"
+                  android:label="@string/title_activity_hardware_scaler"/>
+        <activity android:name="org.learn.test.grafika.TextureViewGLActivity"
+                  android:label="@string/title_activity_textureview_gl"/>
     </application>
 
 
