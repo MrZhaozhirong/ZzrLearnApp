@@ -41,7 +41,7 @@ public class HardwareScalerActivity extends Activity implements SurfaceHolder.Ca
     };
     // Rendering code runs on this thread.  The thread's life span is tied to the Surface.
     private HSRenderThread mRenderThread;
-
+    private SurfaceView sv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +53,7 @@ public class HardwareScalerActivity extends Activity implements SurfaceHolder.Ca
         mWindowWidthHeight = new int[SURFACE_DIM.length][2];
         updateControls();
 
-        SurfaceView sv = (SurfaceView) findViewById(R.id.hardwareScaler_surfaceView);
+        sv = (SurfaceView) findViewById(R.id.hardwareScaler_surfaceView);
         sv.getHolder().addCallback(this);
     }
 
@@ -108,7 +108,6 @@ public class HardwareScalerActivity extends Activity implements SurfaceHolder.Ca
         // Some controls include text based on the view dimensions, so update now.
         updateControls();
 
-        SurfaceView sv = (SurfaceView) findViewById(R.id.hardwareScaler_surfaceView);
         mRenderThread = new HSRenderThread(sv.getHolder());
         mRenderThread.setName("HardwareScaler GL render");
         mRenderThread.start();
@@ -220,7 +219,6 @@ public class HardwareScalerActivity extends Activity implements SurfaceHolder.Ca
         CheckBox cb = (CheckBox) findViewById(R.id.flatShading_checkbox);
         cb.setChecked(mFlatShadingChecked);
     }
-
     // Generates the radio button text.
     private void configureRadioButton(int id, int index) {
         RadioButton rb;
