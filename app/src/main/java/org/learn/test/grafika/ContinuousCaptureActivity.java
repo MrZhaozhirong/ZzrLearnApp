@@ -210,6 +210,7 @@ public class ContinuousCaptureActivity extends Activity implements SurfaceHolder
             throw new RuntimeException("Unable to open camera");
         }
 
+
         Camera.Parameters parms = mCamera.getParameters();
         CameraUtils.choosePreviewSize(parms, desiredWidth, desiredHeight);
         // Try to set the frame rate to a constant value.
@@ -228,6 +229,9 @@ public class ContinuousCaptureActivity extends Activity implements SurfaceHolder
         // Set the preview aspect ratio.
         AspectFrameLayout layout = (AspectFrameLayout) findViewById(R.id.continuousCapture_afl);
         layout.setAspectRatio((double) cameraPreviewSize.width / cameraPreviewSize.height);
+        // Portrait
+        //layout.setAspectRatio((double) cameraPreviewSize.height / cameraPreviewSize.width);
+        //mCamera.setDisplayOrientation(90);
     }
 
     @Override
