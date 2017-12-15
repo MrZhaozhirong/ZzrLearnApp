@@ -20,8 +20,8 @@ public class Texture2dProgram {
     // Simple vertex shader, used for all programs.
     private static final String VERTEX_SHADER =
                     "uniform mat4 uMVPMatrix;\n" +
-                    "uniform mat4 uTexMatrix;\n" +
                     "attribute vec4 aPosition;\n" +
+                    "uniform mat4 uTexMatrix;\n" +
                     "attribute vec4 aTextureCoord;\n" +
                     "varying vec2 vTextureCoord;\n" +
                     "void main() {\n" +
