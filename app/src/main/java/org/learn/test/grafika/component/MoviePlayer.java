@@ -1,7 +1,6 @@
 package org.learn.test.grafika.component;
 
 import android.media.MediaCodec;
-import android.media.MediaCodecInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.Handler;
@@ -10,6 +9,7 @@ import android.util.Log;
 import android.view.Surface;
 
 import org.learn.test.grafika.GrafikaMainActivity;
+import org.learn.test.grafika.util.CameraUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -194,7 +194,7 @@ public class MoviePlayer {
             String mime = format.getString(MediaFormat.KEY_MIME);
             decoder = MediaCodec.createDecoderByType(mime);
             decoder.configure(format, mOutputSurface, null, 0);
-            showSupportedColorFormat(decoder.getCodecInfo().getCapabilitiesForType(mime));
+            CameraUtils.showSupportedColorFormat(decoder.getCodecInfo().getCapabilitiesForType(mime));
             decoder.start();
 
             doExtract(extractor, trackIndex, decoder, mFrameCallback);
@@ -212,13 +212,7 @@ public class MoviePlayer {
         }
     }
 
-    private void showSupportedColorFormat(MediaCodecInfo.CodecCapabilities caps) {
-        System.out.print("supported color format: ");
-        for (int c : caps.colorFormats) {
-            System.out.println("\t"+"0x"+Integer.toHexString(c));
-        }
-        System.out.println();
-    }
+
 
 
     /**

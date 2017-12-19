@@ -1,6 +1,7 @@
 package org.learn.test.grafika.util;
 
 import android.hardware.Camera;
+import android.media.MediaCodecInfo;
 import android.util.Log;
 
 import org.learn.test.grafika.GrafikaMainActivity;
@@ -14,6 +15,13 @@ import java.util.List;
 public class CameraUtils {
     private static final String TAG = GrafikaMainActivity.TAG;
 
+    public static void showSupportedColorFormat(MediaCodecInfo.CodecCapabilities caps) {
+        System.out.print("supported color format: ");
+        for (int c : caps.colorFormats) {
+            System.out.println("\t"+"0x"+Integer.toHexString(c));
+        }
+        System.out.println();
+    }
     /**
      * Attempts to find a preview size that matches the provided width and height (which
      * specify the dimensions of the encoded video).  If it fails to find a match it just
