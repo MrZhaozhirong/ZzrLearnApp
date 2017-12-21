@@ -104,8 +104,72 @@ public class CameraRecordRenderer implements GLSurfaceView.Renderer{
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         Log.w(TAG, " onSurfaceChanged " + width + "x" + height);
-
     }
+
+    // Updates the filter program.
+    public void updateFilter() {
+        Texture2dProgram.ProgramType programType;
+        float[] kernel = null;
+        float colorAdj = 0.0f;
+        Log.d(TAG, "Updating filter to " + mNewFilter);
+        switch (mNewFilter) {
+            case CameraRecordActivity.FILTER_NONE:
+                programType = Texture2dProgram.ProgramType.TEXTURE_EXT;
+                break;
+            case CameraRecordActivity.FILTER_BLACK_WHITE:
+                // (In a previous version the TEXTURE_EXT_BW variant was enabled by a flag called
+                // ROSE_COLORED_GLASSES, because the shader set the red channel to the B&W color
+                // and green/blue to zero.)
+                programType = Texture2dProgram.ProgramType.TEXTURE_EXT_BW;
+                break;
+            case CameraRecordActivity.FILTER_BLUR:
+                programType = Texture2dProgram.ProgramType.TEXTURE_EXT_FILT;
+                kernel = new float[] {
+                        1f/16f, 2f/16f, 1f/16f,
+                        2f/16f, 4f/16f, 2f/16f,
+                        1f/16f, 2f/16f, 1f/16f };
+                break;
+            case CameraRecordActivity.FILTER_SHARPEN:
+                programType = Texture2dProgram.ProgramType.TEXTURE_EXT_FILT;
+                kernel = new float[] {
+                        0f, -1f, 0f,
+                        -1f, 5f, -1f,
+                        0f, -1f, 0f };
+                break;
+            case CameraRecordActivity.FILTER_EDGE_DETECT:
+                programType = Texture2dProgram.ProgramType.TEXTURE_EXT_FILT;
+                kernel = new float[] {
+                        -1f, -1f, -1f,
+                        -1f, 8f, -1f,
+                        -1f, -1f, -1f };
+                break;
+            case CameraRecordActivity.FILTER_EMBOSS:
+                programType = Texture2dProgram.ProgramType.TEXTURE_EXT_FILT;
+                kernel = new float[] {
+                        2f, 0f, 0f,
+                        0f, -1f, 0f,
+                        0f, 0f, -1f };
+                colorAdj = 0.5f;
+                break;
+            default:
+                throw new RuntimeException("Unknown filter mode " + mNewFilter);
+        }
+
+        // Do we need a whole new program?  (We want to avoid doing this if we don't have
+        // too -- compiling a program could be expensive.)
+        if (programType != mFullScreen.getProgram().getProgramType()) {
+            mFullScreen.changeProgram(new Texture2dProgram(programType));
+            // If we created a new program, we need to initialize the texture width/height.
+            mIncomingSizeUpdated = true;
+        }
+        // Update the filter kernel (if any).
+        if (kernel != null) {
+            mFullScreen.getProgram().setKernel(kernel, colorAdj);
+        }
+
+        mCurrentFilter = mNewFilter;
+    }
+
 
     @Override
     public void onDrawFrame(GL10 gl) {
@@ -170,7 +234,7 @@ public class CameraRecordRenderer implements GLSurfaceView.Renderer{
         }
         // Update the filter, if necessary.
         if (mCurrentFilter != mNewFilter) {
-            //updateFilter();
+            updateFilter();
         }
         if (mIncomingSizeUpdated) {
             mFullScreen.getProgram().setTexSize(mIncomingWidth, mIncomingHeight);
