@@ -191,6 +191,22 @@ public class MoviePlayer {
             // Create a MediaCodec decoder, and configure it with the MediaFormat from the
             // extractor.  It's very important to use the format from the extractor because
             // it contains a copy of the CSD-0/CSD-1 codec-specific data chunks.
+
+            //ByteBuffer csd0 = format.getByteBuffer("csd-0");
+            //StringBuilder sb0 = new StringBuilder();
+            //for (int i=0; i<csd0.limit(); i++){
+            //    byte b = csd0.get(i);
+            //    sb0.append(b+" ");
+            //}
+            //Log.w(TAG, "csd-0 : "+sb0.toString());
+            //ByteBuffer csd1 = format.getByteBuffer("csd-1");
+            //StringBuilder sb1 = new StringBuilder();
+            //for (int i=0; i<csd1.limit(); i++){
+            //    byte b = csd1.get(i);
+            //    sb1.append(b+" ");
+            //}
+            //Log.w(TAG, "csd-0 : "+sb1.toString());
+
             String mime = format.getString(MediaFormat.KEY_MIME);
             decoder = MediaCodec.createDecoderByType(mime);
             decoder.configure(format, mOutputSurface, null, 0);
