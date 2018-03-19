@@ -28,3 +28,5 @@ GLES20.glReadPixels(mStartX, mStartY, mWidth, mHeight,
   跟着fork一次真的收获很大，才知道自己对Android的OpenGL的详细细节真的差太多了。
   
 3.NDK版的GL，环境还是依赖于GLSurfaceview的。调用在NDK层，还是有点参考价值的。java层加载纹理后传入jni然后在cpp上走剩下的gl流程。
+
+4.增加对Grafika的学习，详细参考子目录的readme
