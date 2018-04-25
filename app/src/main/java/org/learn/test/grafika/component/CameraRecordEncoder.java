@@ -245,7 +245,7 @@ public class CameraRecordEncoder implements Runnable {
     // ----- accessed exclusively by encoder thread -----
     private int mFrameNum;
     private int mTextureId;
-    private CameraRecordEncoderCore2 mRecordEncoder;
+    private CameraRecordEncoderCore mRecordEncoder;
     private EglCore mEglCore;
     private WindowSurface mInputWindowSurface;
     private FullFrameRect mFullScreen;
@@ -261,8 +261,8 @@ public class CameraRecordEncoder implements Runnable {
     private void prepareEncoder(EGLContext sharedContext, int width, int height, int bitRate,
                                 File outputFile) {
         try {
-            mRecordEncoder = new CameraRecordEncoderCore2(width, height, bitRate, outputFile);
-            mRecordEncoder.audioRecord(false);
+            mRecordEncoder = new CameraRecordEncoderCore(width, height, bitRate, outputFile);
+            //mRecordEncoder.audioRecord(false);
         } catch (IOException ioe) {
             throw new RuntimeException(ioe);
         }
@@ -277,8 +277,8 @@ public class CameraRecordEncoder implements Runnable {
     // Handles a request to stop encoding.
     private void handleStopRecording() {
         Log.d(TAG, "handleStopRecording");
-        mRecordEncoder.audioRecord(true);
-        mRecordEncoder.drainAudioEncoder(true);
+        //mRecordEncoder.audioRecord(true);
+        //mRecordEncoder.drainAudioEncoder(true);
         mRecordEncoder.drainEncoder(true);
         releaseEncoder();
     }
@@ -311,7 +311,7 @@ public class CameraRecordEncoder implements Runnable {
     private void handleFrameAvailable(float[] transform, long timestampNanos) {
         // 把之前的数据推到合成器MediaMuxer当中
         mRecordEncoder.drainEncoder(false);
-        mRecordEncoder.drainAudioEncoder(false);
+        //mRecordEncoder.drainAudioEncoder(false);
         // 把之前设置用于preview的 SurfaceTexture对应的纹理id传进去
         // 然后draw到这个mFullScreen里面
         mFullScreen.drawFrame(mTextureId, transform);
